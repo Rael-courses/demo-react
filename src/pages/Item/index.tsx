@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom";
+import { useGetTodo } from "../../api/getTodo";
 
 export const Item: React.FC = () => {
   const { itemId } = useParams<{ itemId: string }>();
+
+  const { data: item } = useGetTodo(itemId);
 
   if (!itemId) {
     return null;
@@ -9,7 +12,10 @@ export const Item: React.FC = () => {
 
   return (
     <div>
-      <h1>Item id: {itemId}</h1>
+      <p>Item id: {itemId}</p>
+      <p>Item title: {item?.title}</p>
+      <p>Item completed: {item?.completed ? "Yes" : "No"}</p>
+      <p>Item userId: {item?.userId}</p>
     </div>
   );
 };
