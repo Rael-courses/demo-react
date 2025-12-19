@@ -1,14 +1,16 @@
-import { Chrono } from "../../components/Chrono";
-import { ToggleShow } from "../../components/ToggleShow";
+import { InputFieldRef } from "../../components/InputFieldRef";
+import { InputFieldState } from "../../components/InputFieldState";
 
 export const Home: React.FC = () => {
   return (
     <div>
       <h1>Home</h1>
-      <ToggleShow>
+      {/* <ToggleShow>
         <div>Hello World</div>
         <Chrono />
-      </ToggleShow>
+      </ToggleShow> */}
+      <InputFieldState />
+      <InputFieldRef />
     </div>
   );
 };
