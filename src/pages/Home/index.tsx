@@ -1,3 +1,4 @@
+import { Chrono } from "../../components/Chrono";
 import { ToggleShow } from "../../components/ToggleShow";
 
 export const Home: React.FC = () => {
@@ -6,6 +7,7 @@ export const Home: React.FC = () => {
       <h1>Home</h1>
       <ToggleShow>
         <div>Hello World</div>
+        <Chrono />
       </ToggleShow>
     </div>
   );
