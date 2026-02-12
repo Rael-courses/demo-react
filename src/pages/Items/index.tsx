@@ -5,6 +5,7 @@ import { CustomLink } from "../../components/CustomLink";
 
 export const Items: React.FC = () => {
   const { data: todos } = useGetTodos();
+
   return (
     <div>
       <nav>

@@ -7,11 +7,34 @@ export const useGetTodos = () => {
     queryKey: ["todos"],
     staleTime: 1000 * 60 * 5,
     queryFn: async () => {
-      const responseData = await fetch(
+      const response = await fetch(
         `https://jsonplaceholder.typicode.com/todos`
-      ).then((response) => response.json());
-      const validatedData = await z.array(todoSchema).parseAsync(responseData);
-      return validatedData;
+      );
+      const responseJson = await response.json();
+      const validatedData = await z.array(todoSchema).parseAsync(responseJson);
+      return validatedData.slice(0, 5);
     },
   });
 };
+
+// export const useUpdateTodo = (id: string) => {
+//   const queryClient = useQueryClient();
+
+//   return useMutation({
+//     mutationFn: async (updates: Partial<Todo>) => {
+//       const response = await fetch(
+//         `https://jsonplaceholder.typicode.com/todos/${id}`,
+//         {
+//           method: "PUT",
+//           body: JSON.stringify(updates),
+//         }
+//       );
+//       const responseJson = await response.json();
+//       const validatedData = await todoSchema.parseAsync(responseJson);
+//       return validatedData;
+//     },
+//     onSuccess: () => {
+//       queryClient.invalidateQueries({ queryKey: ["todos"] });
+//     },
+//   });
+// };
